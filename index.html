@@ -10,9 +10,19 @@
   </head>
   <body>
     <main>
+      <button command="show-modal" commandfor="new-book">New book</button>
       <h1>TOP Library</h1>
       <h2>Books</h2>
       <ul class="books"></ul>
+      <dialog id="new-book">
+        <h3>New book</h3>
+        <form method="dialog">
+          <input type="text" name="title" id="title" required />
+          <input type="text" name="author" id="author" required />
+          <input type="number" name="year" id="year" required />
+          <button>Add to library</button>
+        </form>
+      </dialog>
     </main>
   </body>
 </html>
