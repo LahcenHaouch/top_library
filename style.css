@@ -21,7 +21,7 @@ button {
 body {
   color: var(--color-primary);
   background-color: var(--bg-primary);
-  padding: 1rem 2rem;
+  padding: 2rem 2rem;
 
   h1 {
     margin-bottom: 2rem;
@@ -44,7 +44,7 @@ body {
 
     .book {
       background-color: var(--bg-tertiary);
-      height: 150px;
+      height: 250px;
 
       padding: 1rem 2rem;
     }
