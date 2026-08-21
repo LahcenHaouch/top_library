@@ -1,6 +1,7 @@
 :root {
   --bg-primary: #101013;
-  --bg-secondary: #1a1a1e;
+  --bg-secondary: #ff5c33;
+  --bg-tertiary: #1a1a1e;
 
   --color-primary: #fafaf4;
   --border-primary: #272727;
@@ -27,6 +28,8 @@ body {
   }
 
   .new-container {
+    background-color: var(--bg-secondary);
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
@@ -40,7 +43,7 @@ body {
     padding: 2rem;
 
     .book {
-      background-color: var(--bg-secondary);
+      background-color: var(--bg-tertiary);
       height: 150px;
 
       padding: 1rem 2rem;
