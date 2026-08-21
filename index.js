@@ -18,6 +18,21 @@ const LIBRARY = [
 ];
 const booksEl = document.querySelector(".books");
 const newBookDialog = document.querySelector("#new-book");
+const formEl = newBookDialog.querySelector("form");
+
+formEl.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+
+  const title = formData.get("title");
+  const author = formData.get("author");
+  const year = formData.get("year");
+
+  LIBRARY.push(new Book(title, author, year));
+  displayBooks();
+  newBookDialog.close();
+});
 
 function resetBooksDisplay() {
   booksEl.innerHTML = "";
