@@ -27,7 +27,8 @@ function resetBooksDisplay() {
 function displayBooks() {
   resetBooksDisplay();
   booksEl.innerHTML = LIBRARY.map(
-    (book) => `<li id="${book.id}">${book.title}</li>`,
+    (book) => `<li id="${book.id}" class="book">
+    <h3 class="book__title">${book.title}</h3></li>`,
   ).reduce((acc, current) => acc + current);
 }
 function addBookToLibrary(book) {

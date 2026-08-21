@@ -1,0 +1,49 @@
+:root {
+  --bg-primary: #101013;
+  --bg-secondary: #1a1a1e;
+
+  --color-primary: #fafaf4;
+  --border-primary: #272727;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+button {
+  border-radius: 0;
+  border: none;
+  padding-inline: 0.75rem;
+}
+
+body {
+  color: var(--color-primary);
+  background-color: var(--bg-primary);
+  padding: 1rem 2rem;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  .new-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .books {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    border: 1px solid var(--border-primary);
+    padding: 2rem;
+
+    .book {
+      background-color: var(--bg-secondary);
+      height: 150px;
+
+      padding: 1rem 2rem;
+    }
+  }
+}

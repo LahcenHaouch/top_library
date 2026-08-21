@@ -5,18 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="uniform.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Hello World</title>
     <script src="index.js" defer></script>
   </head>
   <body>
     <main>
-      <button command="show-modal" commandfor="new-book">New book</button>
       <h1>TOP Library</h1>
-      <h2>Books</h2>
+      <div class="new-container">
+        <h2>Books</h2>
+        <button command="show-modal" commandfor="new-book">New book</button>
+      </div>
       <ul class="books"></ul>
       <dialog id="new-book">
         <button class="new-book-close">Close</button>
-        <h3>New book</h3>
+        <h4>New book</h4>
         <form method="dialog">
           <input type="text" name="title" id="title" required />
           <input type="text" name="author" id="author" required />
