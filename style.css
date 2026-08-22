@@ -15,13 +15,19 @@ ul {
 button {
   border-radius: 0;
   border: none;
-  padding-inline: 0.75rem;
+  padding: 0.25rem 0.75rem;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 0.125rem;
+  }
 }
 
 body {
   color: var(--color-primary);
   background-color: var(--bg-primary);
   padding: 2rem 2rem;
+  position: relative;
 
   h1 {
     margin-bottom: 2rem;
@@ -48,6 +54,52 @@ body {
       border: 1px solid var(--border-primary);
 
       padding: 1rem 2rem;
+    }
+  }
+
+  #new-book {
+    &:modal {
+      background-color: var(--bg-primary);
+      border-color: var(--border-primary);
+      color: var(--color-primary);
+      width: 50%;
+      position: absolute;
+      top: 15%;
+      left: 25%;
+
+      .dialog-header {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .dialog-title {
+        margin-bottom: 1.5rem;
+      }
+
+      .dialog-input-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+
+        label {
+          margin-bottom: 0.5rem;
+        }
+
+        input {
+          padding: 0.5rem 0.75rem;
+          background-color: var(--bg-tertiary);
+          border: none;
+          color: var(--color-primary);
+        }
+      }
+
+      .dialog-footer {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+    &::backdrop {
+      backdrop-filter: blur(3px);
     }
   }
 }

@@ -18,13 +18,26 @@
       </div>
       <ul class="books"></ul>
       <dialog id="new-book">
-        <button class="new-book-close">Close</button>
-        <h4>New book</h4>
+        <div class="dialog-header">
+          <button class="new-book-close">Close</button>
+        </div>
+        <h4 class="dialog-title">New book</h4>
         <form method="dialog">
-          <input type="text" name="title" id="title" required />
-          <input type="text" name="author" id="author" required />
-          <input type="number" name="year" id="year" required />
-          <button>Add to library</button>
+          <div class="dialog-input-container">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" required />
+          </div>
+          <div class="dialog-input-container">
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author" required />
+          </div>
+          <div class="dialog-input-container">
+            <label for="year">Year:</label>
+            <input type="number" name="year" id="year" max="2026" required />
+          </div>
+          <div class="dialog-footer">
+            <button>Add to library</button>
+          </div>
         </form>
       </dialog>
     </main>
