@@ -21,19 +21,21 @@ const newBookDialog = document.querySelector("#new-book");
 const newBookCloseEl = newBookDialog.querySelector(".new-book-close");
 const formEl = newBookDialog.querySelector("form");
 
-function resetBooksDisplay() {
-  booksEl.innerHTML = "";
+function formatBookToDisplay(book) {
+  return `
+  <li id="${book.id}" class="book">
+    <h3 class="book__title">${book.title}</h3> 
+  </li>
+  `;
 }
-function displayBooks() {
-  resetBooksDisplay();
-  booksEl.innerHTML = LIBRARY.map(
-    (book) => `<li id="${book.id}" class="book">
-    <h3 class="book__title">${book.title}</h3></li>`,
-  ).reduce((acc, current) => acc + current);
+function initialDisplay() {
+  booksEl.innerHTML = LIBRARY.map((book) => formatBookToDisplay(book)).reduce(
+    (acc, current) => acc + current,
+  );
 }
 function addBookToLibrary(book) {
   LIBRARY.push(book);
-  displayBooks();
+  booksEl.innerHTML += formatBookToDisplay(book);
 }
 
 newBookCloseEl.addEventListener("click", () => newBookDialog.close());
@@ -42,14 +44,13 @@ formEl.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const formData = new FormData(event.target);
-
   const title = formData.get("title");
   const author = formData.get("author");
   const year = formData.get("year");
 
-  LIBRARY.push(new Book(title, author, year));
-  displayBooks();
+  addBookToLibrary(new Book(title, author, year));
+
   newBookDialog.close();
 });
 
-displayBooks();
+initialDisplay();
