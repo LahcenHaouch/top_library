@@ -31,12 +31,14 @@ input {
 }
 
 body {
+  font-family: "JetBrains Mono", monospace;
   color: var(--color-primary);
   background-color: var(--bg-primary);
   padding: 2rem 2rem;
   position: relative;
 
   h1 {
+    font-family: "Pixelify Sans", sans-serif;
     margin-bottom: 2rem;
   }
 
