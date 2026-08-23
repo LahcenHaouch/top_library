@@ -73,6 +73,8 @@ formEl.addEventListener("submit", (event) => {
 
   addBookToLibrary(new Book(title, author, year));
 
+  formEl.reset();
+
   newBookDialog.close();
 });
 
