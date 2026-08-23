@@ -20,6 +20,7 @@ const booksEl = document.querySelector(".books");
 const newBookDialog = document.querySelector("#new-book");
 const newBookCloseEl = newBookDialog.querySelector(".new-book-close");
 const formEl = newBookDialog.querySelector("form");
+const searchEl = document.querySelector("#search");
 
 function formatBookToDisplay(book) {
   return `
@@ -31,10 +32,18 @@ function formatBookToDisplay(book) {
   </li>
   `;
 }
+function displayBooks(library) {
+  if (!library.length) {
+    booksEl.innerHTML = "<p>404 not found</p>";
+    return;
+  }
+
+  booksEl.innerHTML = library
+    .map((book) => formatBookToDisplay(book))
+    .reduce((acc, current) => acc + current);
+}
 function initialDisplay() {
-  booksEl.innerHTML = LIBRARY.map((book) => formatBookToDisplay(book)).reduce(
-    (acc, current) => acc + current,
-  );
+  displayBooks(LIBRARY);
 }
 function addBookToLibrary(book) {
   LIBRARY.push(book);
@@ -55,6 +64,15 @@ function removeBookFromLibrary(bookId) {
 
 newBookCloseEl.addEventListener("click", () => newBookDialog.close());
 
+searchEl.addEventListener("input", (event) => {
+  const { value } = event.target;
+  const filteredLibrary = LIBRARY.filter(
+    ({ title, year }) =>
+      title.toLowerCase().includes(value.toLowerCase()) ||
+      year.toString().includes(value),
+  );
+  displayBooks(filteredLibrary);
+});
 booksEl.addEventListener("click", (event) => {
   const { target } = event;
   if (!(target instanceof HTMLButtonElement)) {
