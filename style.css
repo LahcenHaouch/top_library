@@ -77,6 +77,19 @@ body {
       .dialog-header {
         display: flex;
         justify-content: flex-end;
+
+        .new-book-close {
+          padding: 0;
+          background-color: transparent;
+          border-radius: 50%;
+
+          svg {
+            display: block;
+            width: 30px;
+            height: 30px;
+            fill: var(--bg-secondary);
+          }
+        }
       }
 
       .dialog-title {

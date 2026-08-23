@@ -19,7 +19,11 @@
       <ul class="books"></ul>
       <dialog id="new-book">
         <div class="dialog-header">
-          <button class="new-book-close">Close</button>
+          <button class="new-book-close" aria-label="close">
+            <svg>
+              <use href="assets/icons/close-circle.svg#close-circle"></use>
+            </svg>
+          </button>
         </div>
         <h4 class="dialog-title">New book</h4>
         <form method="dialog">
