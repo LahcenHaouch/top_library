@@ -9,7 +9,7 @@ function Book(title, author, year) {
   this.year = year;
 }
 
-const LIBRARY = [
+let LIBRARY = [
   new Book("1984", "George Orwell", 1949),
   new Book("The Great Gatsby", "F. Scott Fitzgerald", 1925),
   new Book("To Kill a Mockingbird", "Harper Lee", 1960),
@@ -23,7 +23,10 @@ const formEl = newBookDialog.querySelector("form");
 
 function formatBookToDisplay(book) {
   return `
-  <li id="${book.id}" class="book">
+  <li data-id="${book.id}" class="book">
+    <div>
+      <button data-id="${book.id}">Remove</button>
+    </div>
     <h3 class="book__title">${book.title}</h3> 
   </li>
   `;
@@ -37,9 +40,29 @@ function addBookToLibrary(book) {
   LIBRARY.push(book);
   booksEl.innerHTML += formatBookToDisplay(book);
 }
+function removeBookFromLibrary(bookId) {
+  const bookToRemove = document.querySelector(`li[data-id='${bookId}']`);
+  if (!bookToRemove) {
+    return;
+  }
+  try {
+    bookToRemove.remove();
+    LIBRARY = LIBRARY.filter(({ id }) => id !== bookId);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 newBookCloseEl.addEventListener("click", () => newBookDialog.close());
 
+booksEl.addEventListener("click", (event) => {
+  const { target } = event;
+  if (!(target instanceof HTMLButtonElement)) {
+    return;
+  }
+
+  removeBookFromLibrary(target.dataset.id);
+});
 formEl.addEventListener("submit", (event) => {
   event.preventDefault();
 

@@ -38,7 +38,9 @@ body {
   position: relative;
 
   h1 {
-    font-family: "Pixelify Sans", sans-serif;
+    span {
+      font-family: "Pixelify Sans", sans-serif;
+    }
     margin-bottom: 2rem;
   }
 
