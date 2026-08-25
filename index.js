@@ -7,7 +7,12 @@ function Book(title, author, year) {
   this.title = title;
   this.author = author;
   this.year = year;
+  this.read = false;
 }
+
+Book.prototype.toggleRead = function () {
+  this.read = !this.read;
+};
 
 let LIBRARY = [
   new Book("1984", "George Orwell", 1949),
