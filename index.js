@@ -25,8 +25,12 @@ const searchEl = document.querySelector("#search");
 function formatBookToDisplay(book) {
   return `
   <li data-id="${book.id}" class="book">
-    <div>
-      <button data-id="${book.id}">Remove</button>
+    <div class="delete-container">
+      <button data-id="${book.id}">
+        <svg>
+          <use href="assets/icons/delete-circle-outline.svg#delete-circle-outline"></use> 
+        </svg>
+      </button>
     </div>
     <h3 class="book__title">${book.title} [${book.year}]</h3> 
   </li>
@@ -80,11 +84,13 @@ searchEl.addEventListener("input", (event) => {
 });
 booksEl.addEventListener("click", (event) => {
   const { target } = event;
-  if (!(target instanceof HTMLButtonElement)) {
+
+  const btn = target.closest("button");
+  if (!(btn instanceof HTMLButtonElement)) {
     return;
   }
 
-  removeBookFromLibrary(target.dataset.id);
+  removeBookFromLibrary(btn.dataset.id);
 });
 formEl.addEventListener("submit", (event) => {
   event.preventDefault();

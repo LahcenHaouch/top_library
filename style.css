@@ -16,6 +16,7 @@ button {
   border-radius: 0;
   border: none;
   padding: 0.25rem 0.75rem;
+  cursor: pointer;
 
   &:focus-visible {
     outline: 2px solid var(--color-primary);
@@ -80,6 +81,22 @@ body {
       border: 1px solid var(--border-primary);
 
       padding: 1rem 2rem;
+
+      .delete-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 1rem;
+
+        button {
+          padding: 0;
+          background-color: transparent;
+          svg {
+            fill: var(--bg-secondary);
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
     }
   }
 
