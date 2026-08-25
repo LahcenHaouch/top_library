@@ -70,6 +70,10 @@ body {
     border: 1px solid var(--border-primary);
     padding: 2rem;
 
+    &:has(> .message) {
+      display: flex;
+    }
+
     .book {
       background-color: var(--bg-tertiary);
       height: 250px;

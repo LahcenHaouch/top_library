@@ -28,13 +28,13 @@ function formatBookToDisplay(book) {
     <div>
       <button data-id="${book.id}">Remove</button>
     </div>
-    <h3 class="book__title">${book.title}</h3> 
+    <h3 class="book__title">${book.title} [${book.year}]</h3> 
   </li>
   `;
 }
 function displayBooks(library) {
   if (!library.length) {
-    booksEl.innerHTML = "<p>404 not found</p>";
+    booksEl.innerHTML = '<li class="message"><p>404 not found</p></li>';
     return;
   }
 
@@ -57,6 +57,11 @@ function removeBookFromLibrary(bookId) {
   try {
     bookToRemove.remove();
     LIBRARY = LIBRARY.filter(({ id }) => id !== bookId);
+
+    if (!LIBRARY.length) {
+      booksEl.innerHTML =
+        '<li class="message"><p>Click on "New book" to add your first book to the library</p></li>';
+    }
   } catch (error) {
     console.error(error);
   }
