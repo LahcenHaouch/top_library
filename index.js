@@ -37,6 +37,10 @@ function display404NotFound() {
 }
 
 function formatBookToDisplay(book) {
+  const checkedInput = book.read
+    ? '<input type="checkbox" checked name="read" />'
+    : '<input type="checkbox" name="read" />';
+
   return `
   <li data-id="${book.id}" class="book">
     <div class="delete-container">
@@ -47,6 +51,10 @@ function formatBookToDisplay(book) {
       </button>
     </div>
     <h3 class="book__title">${book.title} [${book.year}]</h3> 
+    <div class="read-container">
+    ${checkedInput}
+      <p>Read ?</p>
+    </div>
   </li>
   `;
 }
@@ -113,6 +121,21 @@ booksEl.addEventListener("click", (event) => {
   }
 
   removeBookFromLibrary(btn.dataset.id);
+});
+booksEl.addEventListener("click", (event) => {
+  const { target } = event;
+  if (!(target instanceof HTMLInputElement)) {
+    return;
+  }
+
+  const liEl = target.closest("li");
+  const bookdId = liEl.dataset.id;
+  const book = LIBRARY.find(({ id }) => id === bookdId);
+  if (!book) {
+    return;
+  }
+
+  book.toggleRead();
 });
 formEl.addEventListener("submit", (event) => {
   event.preventDefault();

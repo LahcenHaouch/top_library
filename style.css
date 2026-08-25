@@ -98,6 +98,22 @@ body {
           }
         }
       }
+      h3 {
+        margin-bottom: 0.5rem;
+      }
+
+      .read-container {
+        display: flex;
+        gap: 1rem;
+
+        input {
+          width: 30px;
+          accent-color: var(--bg-secondary);
+          &:focus-visible {
+            outline-offset: 0.25rem;
+          }
+        }
+      }
     }
   }
 
