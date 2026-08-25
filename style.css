@@ -90,6 +90,7 @@ body {
         button {
           padding: 0;
           background-color: transparent;
+          border-radius: 50%;
           svg {
             fill: var(--bg-secondary);
             width: 40px;

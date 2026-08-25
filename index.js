@@ -22,6 +22,15 @@ const newBookCloseEl = newBookDialog.querySelector(".new-book-close");
 const formEl = newBookDialog.querySelector("form");
 const searchEl = document.querySelector("#search");
 
+function displayEmptyLibrary() {
+  booksEl.innerHTML =
+    '<li class="message"><p>Click on "New book" to add your first book to the library</p></li>';
+}
+
+function display404NotFound() {
+  booksEl.innerHTML = '<li class="message"><p>404 not found</p></li>';
+}
+
 function formatBookToDisplay(book) {
   return `
   <li data-id="${book.id}" class="book">
@@ -37,8 +46,13 @@ function formatBookToDisplay(book) {
   `;
 }
 function displayBooks(library) {
+  if (!LIBRARY.length) {
+    displayEmptyLibrary();
+    return;
+  }
+
   if (!library.length) {
-    booksEl.innerHTML = '<li class="message"><p>404 not found</p></li>';
+    display404NotFound();
     return;
   }
 
@@ -50,6 +64,10 @@ function initialDisplay() {
   displayBooks(LIBRARY);
 }
 function addBookToLibrary(book) {
+  if (!LIBRARY.length) {
+    booksEl.innerHTML = "";
+  }
+
   LIBRARY.push(book);
   booksEl.innerHTML += formatBookToDisplay(book);
 }
@@ -63,8 +81,7 @@ function removeBookFromLibrary(bookId) {
     LIBRARY = LIBRARY.filter(({ id }) => id !== bookId);
 
     if (!LIBRARY.length) {
-      booksEl.innerHTML =
-        '<li class="message"><p>Click on "New book" to add your first book to the library</p></li>';
+      displayEmptyLibrary();
     }
   } catch (error) {
     console.error(error);
